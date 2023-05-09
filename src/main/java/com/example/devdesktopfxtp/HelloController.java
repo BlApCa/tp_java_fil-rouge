@@ -87,7 +87,7 @@ public class HelloController {
         dialog.show();
     }
 
-    public void sendMailAction(ActionEvent event) throws IOException {
+    public void sendMailAction() throws IOException {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(HelloApplication.class.getResource("send-mail-view.fxml"));
         stage.setScene(new Scene(root));

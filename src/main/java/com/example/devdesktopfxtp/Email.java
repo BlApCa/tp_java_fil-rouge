@@ -8,7 +8,6 @@ import java.util.Date;
 
 
 public class Email {
-
     private String body ;
     private String sender ;
     private String recipient ;
