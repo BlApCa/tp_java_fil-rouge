@@ -4,9 +4,15 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
@@ -23,10 +29,8 @@ public class HelloController {
     private TreeView<Object> listingEmails;
     @FXML
     private Menu refresh;
-
     @FXML
     private Label refresherLabel;
-
 
 
     @FXML
@@ -36,7 +40,7 @@ public class HelloController {
         EmailManager emailManager = new EmailManager();
         List<Email> emailList = emailManager.readEmails();
 
-        for (Email email: emailList) {
+        for (Email email : emailList) {
             root.getChildren().add(new TreeItem<>(email));
         }
         listingEmails.setRoot(root);
@@ -44,7 +48,7 @@ public class HelloController {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Calendar cal = Calendar.getInstance();
         String today = dateFormat.format(cal.getTime()).toString();
-        refresherLabel.setText("Dernière synchronisation : "+today);
+        refresherLabel.setText("Dernière synchronisation : " + today);
         WebEngine webView = view.getEngine();
         String webContent = "<h1>HELLO</h1>";
         webView.loadContent(webContent);
@@ -56,7 +60,12 @@ public class HelloController {
                 if (selectedItem.getValue() instanceof Email) {
                     Email selectedEmail = (Email) selectedItem.getValue();
                     WebEngine webEngine = view.getEngine();
-                    String webContent = "Expéditeur : " + selectedEmail.getSender()+"<br>"+selectedEmail.getBody();
+                    String sender = "Expéditeur : " + selectedEmail.getSender();
+                    String recipient = "Destinataire : " + selectedEmail.getRecipient();
+                    String date = "Envoyé le : " + selectedEmail.getDate();
+                    String subject = "<h3>" + selectedEmail.getSubject() + "</h3>";
+                    String body = selectedEmail.getBody();
+                    String webContent = sender + "</br>" + recipient + "</br>" + date + subject + body;
                     webEngine.loadContent(webContent);
                 }
             }
@@ -64,6 +73,7 @@ public class HelloController {
         SelectionModel<TreeItem<Object>> sm = listingEmails.getSelectionModel();
         sm.selectedItemProperty().addListener(listener);
     }
+
     @FXML
     public void refresherAction() throws MessagingException, IOException {
         listingEmails.getSelectionModel().selectedItemProperty().removeListener(listener);
@@ -71,7 +81,6 @@ public class HelloController {
     }
 
     public void aboutAction() {
-
         Dialog<String> dialog = new Dialog<>();
         dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
         dialog.setTitle("À propos");
@@ -79,6 +88,11 @@ public class HelloController {
         dialog.show();
     }
 
-    public void sendMailAction() {
+    public void sendMailAction(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(HelloApplication.class.getResource("send-mail-view.fxml"));
+        stage.setScene(new Scene(root));
+        stage.setTitle("Sender Mail");
+        stage.show();
     }
 }

@@ -80,5 +80,7 @@ public class EmailManager {
 //        );
 
         List<Email> emails = emailManager.readEmails();
+
+        System.out.println(emails.get(0).getBody());
     }
 }

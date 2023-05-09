@@ -55,8 +55,10 @@
                         <Menu fx:id="refresher" onAction="#refresherAction" mnemonicParsing="false" text="Synchronyser les mails"/>
                     </items>
                 </Menu>
-                <Menu fx:id="mailSender" onAction="#sendMailAction" mnemonicParsing="false" text="Nouveau mail">
-
+                <Menu fx:id="composer" mnemonicParsing="false" text="Composer message">
+                    <items>
+                        <Menu fx:id="mailSender" onAction="#sendMailAction" mnemonicParsing="false" text="Nouveau mail"/>
+                    </items>
                 </Menu>
                 <Menu id="4" mnemonicParsing="false" text="Aide">
                     <items>
