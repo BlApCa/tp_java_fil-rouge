@@ -32,7 +32,6 @@ public class HelloController {
     @FXML
     private Label refresherLabel;
 
-
     @FXML
     public void initialize() throws MessagingException, IOException {
         TreeItem<Object> root = new TreeItem<>("Boite de reception");

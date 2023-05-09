@@ -73,11 +73,11 @@ public class EmailManager {
     public static void main(String[] args) throws MessagingException, IOException {
         EmailManager emailManager = new EmailManager();
 
-//        emailManager.sendEmail(
-//                "javamailynovlh@gmail.com",
-//                "Test JavaMail",
-//                "Bonjour,\n\nVoila un petit test pour le JavaMailer.\n\nCordialement,\nJava Mail Ynov LH"
-//        );
+        emailManager.sendEmail(
+                "hugo.lanzafame@ynov.com",
+                "Test JavaMail",
+                "Bonjour,\n\nVoila un petit test pour le JavaMailer.\n\nCordialement,\nJava Mail Ynov LH"
+        );
 
         List<Email> emails = emailManager.readEmails();
 

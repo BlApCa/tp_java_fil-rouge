@@ -7,45 +7,51 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
-         <children>
-            <Label text="Composer un message">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <TextArea maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="580.0" promptText="Email du destinataire">
-               <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </VBox.margin>
-            </TextArea>
-            <TextArea maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="580.0" promptText="Sujet du mail">
-               <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </VBox.margin>
-            </TextArea>
-            <TextArea maxHeight="600.0" maxWidth="1000.0" prefHeight="1000.0" prefWidth="580.0" promptText="Contenu du mail">
-               <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </VBox.margin>
-            </TextArea>
-            <Button mnemonicParsing="false" text="Envoyer" textAlignment="CENTER">
-               <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </VBox.margin>
-            </Button>
-         </children>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </VBox>
-   </children>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+      prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.devdesktopfxtp.SendMailController">
+    <children>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+            <children>
+                <Label text="Composer un message">
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                    </VBox.margin>
+                    <font>
+                        <Font size="24.0"/>
+                    </font>
+                </Label>
+                <TextArea fx:id="receiverEmail" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0"
+                          prefWidth="580.0" promptText="Email du destinataire">
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                    </VBox.margin>
+                </TextArea>
+                <TextArea fx:id="subjectEmail" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0"
+                          prefWidth="580.0" promptText="Sujet du mail">
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                    </VBox.margin>
+                </TextArea>
+                <TextArea fx:id="bodyEmail" maxHeight="600.0" maxWidth="1000.0" prefHeight="1000.0" prefWidth="580.0"
+                          promptText="Contenu du mail">
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                    </VBox.margin>
+                </TextArea>
+                <Button fx:id="sendMail" onAction="#sendMail" mnemonicParsing="false" text="Envoyer"
+                        textAlignment="CENTER">
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                    </VBox.margin>
+                </Button>
+            </children>
+            <VBox.margin>
+                <Insets/>
+            </VBox.margin>
+        </VBox>
+    </children>
 </VBox>
